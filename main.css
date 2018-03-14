@@ -1,0 +1,11 @@
+body {
+  background-color: #999;
+  font-family: Verdana, Geneva, sans-serif;
+  margin: 25px;
+  padding: 50px;
+}
+
+.myCanvas {
+  margin: auto;
+  width: 100%;
+}
