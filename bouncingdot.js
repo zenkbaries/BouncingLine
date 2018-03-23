@@ -24,9 +24,9 @@ ctx.clearRect(0, 0, c.width, c.height);
 //  Declaration
 
 var dotColor = "#FFFFFF";
-var dotSize = 1;
-var dirX = 1;
-var dirY = 1;
+var dotSize = 5;
+var dirX = 10;
+var dirY = 10;
 
 // // Dot class
 // class Dots {
