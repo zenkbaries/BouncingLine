@@ -22,7 +22,6 @@ ctx.clearRect(0, 0, c.width, c.height);
 //
 
 //  Declaration
-
 var lineColor = "#FFFFFF";
 var lineSize = 5;
 var dirX1 = 10;
@@ -30,17 +29,7 @@ var dirY1 = 10;
 var dirX2 = -10;
 var dirY2 = -10;
 
-
-// // line class
-// class lines {
-//   constructor(x, y) {
-//     this.x = x;
-//     this.y = y;
-//     // this.x = Math.round(Math.random() * c.width);
-//     // this.y = Math.round(Math.random() * c.height);
-//   }
-// }
-
+// create line
 function Lines() {
   this.x1 = Math.round(Math.random() * c.width);
   this.y1 = Math.round(Math.random() * c.height);
@@ -51,29 +40,19 @@ function Lines() {
 
 // Initialize line
 var line = new Lines;
-// draw Lines
 
+// draw Lines
 function drawLines(objLine) {
-  // fade = (dR-dAge)/dR;
-  // ctx.globalAlpha = fade;
+
   ctx.fillStyle = lineColor;
 
   ctx.beginPath();
-  ctx.moveTo(objLine.x1,objLine.y1);
-  ctx.lineTo(objLine.x2,objLine.y2);
+  ctx.moveTo(objLine.x1, objLine.y1);
+  ctx.lineTo(objLine.x2, objLine.y2);
   ctx.strokeStyle = lineColor;
   ctx.stroke();
   ctx.closePath();
 
-  // ctx.beginPath();
-  // ctx.strokeStyle = lineColor;
-  // ctx.arc(objLine.x1, objLine.y1, lineSize, 0, 2 * Math.PI);
-  // ctx.arc(objLine.x2, objLine.y2, lineSize, 0, 2 * Math.PI);
-  //
-  // ctx.fill();
-  // ctx.closePath();
-
-  // ctx.globalAlpha = 1.0;
 }
 
 // draw - where animation is
@@ -84,6 +63,8 @@ function draw() {
   ctx.globalAlpha = 1.0;
   ctx.fillStyle = bgColor;
   ctx.fillRect(0, 0, c.width, c.height);
+
+  //  change direction of line's end if hitting boundary
 
   if ((line.x1 <= 0) || (line.x1 >= scrW)) {
     dirX1 = dirX1 * -1;
@@ -108,34 +89,7 @@ function draw() {
 
   drawLines(line);
 
-  // add new Drops to array after delay
-  // if (count >= 5) {
-  //   //new raindrop
-  //   drops.push(new Raindrops);
-  //   count = 0;
-  // }
-
-  // draw each drops in array
-  // for(var i=0; i < drops.length; i++) {
-  //   drops[i].age += 1;
-  //   eachDrop = drops[i];
-  //   if (eachDrop.age >= eachDrop.r) {
-  //     drops.splice(i,1);
-  //   }
-  //   // this next line needs refactoring
-  //   drawRaindrop(eachDrop.x, eachDrop.y, eachDrop.r, eachDrop.age);
-  // }
-  // count += 1;
-
 }
-
-
-
-//
-//   drawing
-//
-
-
 
 //
 //  Animation
@@ -144,12 +98,12 @@ function draw() {
 // Initalize the animationFrame
 window.requestAnimFrame = (
   function() {
-    return window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      function(callback) {
-        window.setTimeout(callback, 1000 / 60);
-      };
+    return  window.requestAnimationFrame        ||
+            window.webkitRequestAnimationFrame  ||
+            window.mozRequestAnimationFrame     ||
+            function(callback) {
+              window.setTimeout(callback, 1000 / 60);
+            };
   }
 )();
 
