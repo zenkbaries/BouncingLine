@@ -49,6 +49,7 @@ function drawLines(objLine) {
   ctx.beginPath();
   ctx.moveTo(objLine.x1, objLine.y1);
   ctx.lineTo(objLine.x2, objLine.y2);
+  ctx.lineWidth = 5;
   ctx.strokeStyle = lineColor;
   ctx.stroke();
   ctx.closePath();
