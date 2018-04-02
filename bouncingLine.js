@@ -25,8 +25,11 @@ ctx.clearRect(0, 0, c.width, c.height);
 
 var lineColor = "#FFFFFF";
 var lineSize = 5;
-var dirX = 10;
-var dirY = 10;
+var dirX1 = 10;
+var dirY1 = 10;
+var dirX2 = -10;
+var dirY2 = -10;
+
 
 // // line class
 // class lines {
@@ -39,8 +42,10 @@ var dirY = 10;
 // }
 
 function Lines() {
-  this.x = Math.round(Math.random() * c.width);
-  this.y = Math.round(Math.random() * c.height);
+  this.x1 = Math.round(Math.random() * c.width);
+  this.y1 = Math.round(Math.random() * c.height);
+  this.x2 = Math.round(Math.random() * c.width);
+  this.y2 = Math.round(Math.random() * c.height);
 
 }
 
@@ -52,11 +57,22 @@ function drawLines(objLine) {
   // fade = (dR-dAge)/dR;
   // ctx.globalAlpha = fade;
   ctx.fillStyle = lineColor;
+
   ctx.beginPath();
+  ctx.moveTo(objLine.x1,objLine.y1);
+  ctx.lineTo(objLine.x2,objLine.y2);
   ctx.strokeStyle = lineColor;
-  ctx.arc(objLine.x, objLine.y, lineSize, 0, 2 * Math.PI);
-  ctx.fill();
+  ctx.stroke();
   ctx.closePath();
+
+  // ctx.beginPath();
+  // ctx.strokeStyle = lineColor;
+  // ctx.arc(objLine.x1, objLine.y1, lineSize, 0, 2 * Math.PI);
+  // ctx.arc(objLine.x2, objLine.y2, lineSize, 0, 2 * Math.PI);
+  //
+  // ctx.fill();
+  // ctx.closePath();
+
   // ctx.globalAlpha = 1.0;
 }
 
@@ -69,16 +85,26 @@ function draw() {
   ctx.fillStyle = bgColor;
   ctx.fillRect(0, 0, c.width, c.height);
 
-  if ((line.x <= 0) || (line.x >= scrW)) {
-    dirX = dirX * -1;
+  if ((line.x1 <= 0) || (line.x1 >= scrW)) {
+    dirX1 = dirX1 * -1;
   }
 
-  if ((line.y <= 0) || (line.y >= scrH)) {
-    dirY = dirY * -1;
+  if ((line.y1 <= 0) || (line.y1 >= scrH)) {
+    dirY1 = dirY1 * -1;
   }
 
-  line.x = line.x + dirX;
-  line.y = line.y + dirY;
+  if ((line.x2 <= 0) || (line.x2 >= scrW)) {
+    dirX2 = dirX2 * -1;
+  }
+
+  if ((line.y2 <= 0) || (line.y2 >= scrH)) {
+    dirY2 = dirY2 * -1;
+  }
+
+  line.x1 = line.x1 + dirX1;
+  line.y1 = line.y1 + dirY1;
+  line.x2 = line.x2 + dirX2;
+  line.y2 = line.y2 + dirY2;
 
   drawLines(line);
 
