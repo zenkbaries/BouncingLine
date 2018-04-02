@@ -23,13 +23,13 @@ ctx.clearRect(0, 0, c.width, c.height);
 
 //  Declaration
 
-var dotColor = "#FFFFFF";
-var dotSize = 5;
+var lineColor = "#FFFFFF";
+var lineSize = 5;
 var dirX = 10;
 var dirY = 10;
 
-// // Dot class
-// class Dots {
+// // line class
+// class lines {
 //   constructor(x, y) {
 //     this.x = x;
 //     this.y = y;
@@ -38,23 +38,23 @@ var dirY = 10;
 //   }
 // }
 
-function Dots() {
+function lines() {
   this.x = Math.round(Math.random() * c.width);
   this.y = Math.round(Math.random() * c.height);
 
 }
 
-// Initialize dot
-var dot = new Dots;
-// draw Dots
+// Initialize line
+var line = new Lines;
+// draw Lines
 
-function drawDots(objDot) {
+function drawLines(objLine) {
   // fade = (dR-dAge)/dR;
   // ctx.globalAlpha = fade;
-  ctx.fillStyle = dotColor;
+  ctx.fillStyle = LineColor;
   ctx.beginPath();
-  ctx.strokeStyle = dotColor;
-  ctx.arc(objDot.x, objDot.y, dotSize, 0, 2 * Math.PI);
+  ctx.strokeStyle = LineColor;
+  ctx.arc(objLine.x, objLine.y, lineSize, 0, 2 * Math.PI);
   ctx.fill();
   ctx.closePath();
   // ctx.globalAlpha = 1.0;
@@ -69,18 +69,18 @@ function draw() {
   ctx.fillStyle = bgColor;
   ctx.fillRect(0, 0, c.width, c.height);
 
-  if ((dot.x <= 0) || (dot.x >= scrW)) {
+  if ((line.x <= 0) || (line.x >= scrW)) {
     dirX = dirX * -1;
   }
 
-  if ((dot.y <= 0) || (dot.y >= scrH)) {
+  if ((line.y <= 0) || (line.y >= scrH)) {
     dirY = dirY * -1;
   }
 
-  dot.x = dot.x + dirX;
-  dot.y = dot.y + dirY;
+  line.x = line.x + dirX;
+  line.y = line.y + dirY;
 
-  drawDots(dot);
+  drawLines(line);
 
   // add new Drops to array after delay
   // if (count >= 5) {
