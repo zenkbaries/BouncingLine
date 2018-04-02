@@ -1,3 +1,3 @@
-# BouncingDot
+# BouncingLine
 
 ## Sample canvas using animation

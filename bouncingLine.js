@@ -38,7 +38,7 @@ var dirY = 10;
 //   }
 // }
 
-function lines() {
+function Lines() {
   this.x = Math.round(Math.random() * c.width);
   this.y = Math.round(Math.random() * c.height);
 
@@ -51,9 +51,9 @@ var line = new Lines;
 function drawLines(objLine) {
   // fade = (dR-dAge)/dR;
   // ctx.globalAlpha = fade;
-  ctx.fillStyle = LineColor;
+  ctx.fillStyle = lineColor;
   ctx.beginPath();
-  ctx.strokeStyle = LineColor;
+  ctx.strokeStyle = lineColor;
   ctx.arc(objLine.x, objLine.y, lineSize, 0, 2 * Math.PI);
   ctx.fill();
   ctx.closePath();
